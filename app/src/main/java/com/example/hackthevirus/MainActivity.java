@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Button listaMagazine = findViewById(R.id.listaMagazine);
         final TextView numarCurent = findViewById((R.id.numarCurent));
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        final Customers c=new Customers(numarCurent);
 
 
 
@@ -38,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         plusPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numarCurent.setText(Integer.parseInt(numarCurent.getText().toString())+1+"");
+
+                c.addCustomer();
                 database.child(id).child("numar").setValue(numarCurent.getText().toString());
 
 
 
                 //pt butonul de login
+/*
                 List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build());
                 int RC_SIGN_IN = 200;
                 if(FirebaseAuth.getInstance().getCurrentUser()==null)//cu asta verifici daca utilizatorul e logat pastreaza starea si dupa ce inchizi aplicatia btw
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         RC_SIGN_IN);
                 //buton de sign out : FirebaseAuth.getInstance().signOut();
                 //final
-
+*/
             }
         });
 

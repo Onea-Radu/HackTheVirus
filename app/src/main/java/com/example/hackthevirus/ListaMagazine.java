@@ -22,6 +22,7 @@ public class ListaMagazine extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class ListaMagazine extends AppCompatActivity {
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                setTitle("am ajuns aici");
+
                 try {
 
                     for (DataSnapshot i : dataSnapshot.getChildren())
