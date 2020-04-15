@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "257430943639",
+    "firebase_url": "https://hackthevirus-4a120.firebaseio.com",
+    "project_id": "hackthevirus-4a120",
+    "storage_bucket": "hackthevirus-4a120.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257430943639:android:156824aed69135c21376d2",
+        "android_client_info": {
+          "package_name": "com.example.hackthevirus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257430943639-lkdok81172b0qpjhodbrhfeu3ia96mjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqS5UzWZGkYpR3aru9IKLH51v7UwOcJv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257430943639-lkdok81172b0qpjhodbrhfeu3ia96mjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
