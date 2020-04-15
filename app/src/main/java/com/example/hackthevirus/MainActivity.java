@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String id="12";
+    String id="15";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 //pt butonul de login
                 List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build());
                 int RC_SIGN_IN = 200;
-                if(FirebaseAuth.getInstance().getCurrentUser()==null)
+                if(FirebaseAuth.getInstance().getCurrentUser()==null)//cu asta verifici daca utilizatorul e logat pastreaza starea si dupa ce inchizi aplicatia btw
                 startActivityForResult(
                         AuthUI.getInstance()
                                 .createSignInIntentBuilder()
