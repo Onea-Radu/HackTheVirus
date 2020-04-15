@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
@@ -22,13 +24,15 @@ public class Customers {
     int minutes;
     Runnable r;
     TextView textView;
+    DatabaseReference datb;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public Customers(TextView tv, int min){
+    public Customers(TextView tv, DatabaseReference db, int min){
         super();
         Log.d( "TAG","am ajuns aici*************");
         this.customers=new ConcurrentLinkedQueue<>();
         this.minutes=min;
         this.textView=tv;
+        this.datb=db;
         this.r=()->{
 
 
@@ -47,9 +51,9 @@ public class Customers {
 
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public Customers(TextView tv)
+    public Customers(TextView tv,DatabaseReference db)
     {
-        this(tv,5);
+        this(tv,db,1);
     }
     public void addCustomer(){
         customers.add(new Date(System.currentTimeMillis() +minutes *60* 1000));
@@ -60,6 +64,7 @@ public class Customers {
     }
     public void setTxt(){
         textView.setText(getSize()+"");
+        datb.child("numar").setValue(getSize()+"");
     }
 
 

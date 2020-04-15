@@ -1,8 +1,10 @@
 package com.example.hackthevirus;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String id="15";
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Button listaMagazine = findViewById(R.id.listaMagazine);
         final TextView numarCurent = findViewById((R.id.numarCurent));
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        final Customers c=new Customers(numarCurent);
+        final Customers c=new Customers(numarCurent,database.child(id));
 
 
 
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 c.addCustomer();
-                database.child(id).child("numar").setValue(numarCurent.getText().toString());
+
 
 
 
