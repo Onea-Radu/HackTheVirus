@@ -1,6 +1,7 @@
 package com.example.hackthevirus;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -27,6 +28,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListaMagazine extends AppCompatActivity {
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200 && resultCode==RESULT_OK)
+        { new Intent();
+        }
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
