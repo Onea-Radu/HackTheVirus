@@ -32,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         final Customers c=new Customers(numarCurent,database.child(id));
 
+        Button logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         plusPlus.setOnClickListener(new View.OnClickListener() {
             @Override
