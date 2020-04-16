@@ -33,15 +33,19 @@ public class ListaMagazine extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==200 && resultCode==RESULT_OK)
-        { new Intent();
+        {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
         }
-
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_lista_magazine);
         final ListView listViewMagazine = (ListView) findViewById(R.id.listViewMagazine);
 

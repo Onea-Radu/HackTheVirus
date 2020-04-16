@@ -41,18 +41,6 @@
         app:layout_constraintVertical_bias="0.322" />
 
     <Button
-        android:id="@+id/listaMagazine"
-        android:layout_width="97dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="40dp"
-        android:text="lista magazine"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plusPlus" />
-
-    <Button
         android:id="@+id/logout"
         android:layout_width="97dp"
         android:layout_height="65dp"

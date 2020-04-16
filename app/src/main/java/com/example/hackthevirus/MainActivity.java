@@ -20,44 +20,39 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String id="15";
+    String id;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        id=FirebaseAuth.getInstance().getUid();
         setContentView(R.layout.activity_main);
         Button plusPlus = findViewById(R.id.plusPlus);
-        Button listaMagazine = findViewById(R.id.listaMagazine);
         final TextView numarCurent = findViewById((R.id.numarCurent));
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         final Customers c=new Customers(numarCurent,database.child(id));
+        startActivity(new Intent( getApplicationContext(),AfterFirstLogin.class));
+
+
 
         Button logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),ListaMagazine.class));
+                finish();
             }
         });
 
         plusPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 c.addCustomer();
-
-
-
             }
         });
 
-        listaMagazine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ListaMagazine.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 }
