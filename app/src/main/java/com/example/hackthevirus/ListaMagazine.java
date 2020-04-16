@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,12 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ListaMagazine extends AppCompatActivity {
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,26 @@ public class ListaMagazine extends AppCompatActivity {
                 "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
                 "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
                 "Android", "iPhone", "WindowsMobile" };
+        Button loginBtn = findViewById(R.id.loginBtn);
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //pt butonul de login
+
+                List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build());
+                int RC_SIGN_IN = 200;
+                if(FirebaseAuth.getInstance().getCurrentUser()==null)//cu asta verifici daca utilizatorul e logat pastreaza starea si dupa ce inchizi aplicatia btw
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setAvailableProviders(providers)
+                                    .build(),
+                            RC_SIGN_IN);
+                //buton de sign out : FirebaseAuth.getInstance().signOut();
+                //final
+            }
+        });
 
         final ArrayList<String> list = new ArrayList<String>();
         /*for (int i = 0; i < values.length; ++i) {
