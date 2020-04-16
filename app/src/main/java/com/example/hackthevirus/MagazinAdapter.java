@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MagazinAdapter extends ArrayAdapter<String> {
+public class MagazinAdapter extends ArrayAdapter<Magazin> {
 
 
     int position;
@@ -23,7 +23,7 @@ public class MagazinAdapter extends ArrayAdapter<String> {
         this.position = position;
     }
 
-    public MagazinAdapter(Context context, ArrayList<String> details) {
+    public MagazinAdapter(Context context, ArrayList<Magazin> details) {
         super(context,R.layout.row_item,details);
     }
 
@@ -32,7 +32,6 @@ public class MagazinAdapter extends ArrayAdapter<String> {
         LayoutInflater reportsInflater = LayoutInflater.from(getContext());
         View reportView = reportsInflater.inflate(R.layout.row_item,parent,false);
 
-        String singleReportItem = getItem(position);
         TextView shopName = (TextView) reportView.findViewById(R.id.shopName);
         TextView shopAdress = (TextView) reportView.findViewById(R.id.shopAdress);
         TextView shopNumber = (TextView) reportView.findViewById(R.id.shopNumber);

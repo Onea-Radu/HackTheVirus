@@ -65,7 +65,7 @@ public class ListaMagazine extends AppCompatActivity {
             }
         });
 
-        final ArrayList<String> list = new ArrayList<String>();
+        final ArrayList<Magazin> list = new ArrayList<Magazin>();
         /*for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
         }*/
@@ -77,12 +77,18 @@ public class ListaMagazine extends AppCompatActivity {
 
                 try {
 
-                    for (DataSnapshot i : dataSnapshot.getChildren())
-                        list.add(i.child("numar").getValue().toString());
+                    for (DataSnapshot i : dataSnapshot.getChildren()){
+                        Magazin mag = new Magazin();
+                        mag.numar = i.child("numar").getValue().toString();
+                        mag.adresa = i.child("adresa").getValue().toString();
+                        mag.nume = i.child("nume").getValue().toString();
+                        list.add(mag);
+                    }
 
                    /* final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1, android.R.id.text1, list);
                     listViewMagazine.setAdapter(adapter);*/
+
                    setLayout(list);
                 }
                 catch (Exception e){Toast.makeText(getApplicationContext(),"numergesefu",Toast.LENGTH_LONG);}
@@ -96,12 +102,12 @@ public class ListaMagazine extends AppCompatActivity {
 
     }
 
-    public void setLayout( ArrayList<String> list){
+    public void setLayout( ArrayList<Magazin> list){
 
         final ListAdapter reportAdapter = new MagazinAdapter(this,list);
         ListView reportListView = (ListView)  findViewById(R.id.listViewMagazine);
         reportListView.setAdapter(reportAdapter);
-
+        
         reportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
