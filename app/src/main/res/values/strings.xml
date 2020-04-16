@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HackTheVirus</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
