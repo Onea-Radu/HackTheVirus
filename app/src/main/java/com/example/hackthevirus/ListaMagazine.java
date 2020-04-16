@@ -107,7 +107,7 @@ public class ListaMagazine extends AppCompatActivity {
         final ListAdapter reportAdapter = new MagazinAdapter(this,list);
         ListView reportListView = (ListView)  findViewById(R.id.listViewMagazine);
         reportListView.setAdapter(reportAdapter);
-        
+
         reportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

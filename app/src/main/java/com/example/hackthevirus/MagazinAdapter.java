@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MagazinAdapter extends ArrayAdapter<Magazin> {
 
@@ -35,6 +36,10 @@ public class MagazinAdapter extends ArrayAdapter<Magazin> {
         TextView shopName = (TextView) reportView.findViewById(R.id.shopName);
         TextView shopAdress = (TextView) reportView.findViewById(R.id.shopAdress);
         TextView shopNumber = (TextView) reportView.findViewById(R.id.shopNumber);
+
+        shopName.setText(Objects.requireNonNull(getItem(position)).nume);
+        shopAdress.setText(Objects.requireNonNull(getItem(position)).adresa);
+        shopNumber.setText(Objects.requireNonNull(getItem(position)).numar);
 
         return reportView;
         }
