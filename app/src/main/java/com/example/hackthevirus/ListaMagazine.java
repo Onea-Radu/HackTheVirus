@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,11 +33,6 @@ public class ListaMagazine extends AppCompatActivity {
         setContentView(R.layout.activity_lista_magazine);
         final ListView listViewMagazine = (ListView) findViewById(R.id.listViewMagazine);
 
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
         Button loginBtn = findViewById(R.id.loginBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +69,10 @@ public class ListaMagazine extends AppCompatActivity {
                     for (DataSnapshot i : dataSnapshot.getChildren())
                         list.add(i.child("numar").getValue().toString());
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                   /* final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1, android.R.id.text1, list);
-                    listViewMagazine.setAdapter(adapter);
+                    listViewMagazine.setAdapter(adapter);*/
+                   setLayout(list);
                 }
                 catch (Exception e){Toast.makeText(getApplicationContext(),"numergesefu",Toast.LENGTH_LONG);}
                 }
@@ -85,7 +83,20 @@ public class ListaMagazine extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void setLayout( ArrayList<String> list){
+
+        final ListAdapter reportAdapter = new MagazinAdapter(this,list);
+        ListView reportListView = (ListView)  findViewById(R.id.listViewMagazine);
+        reportListView.setAdapter(reportAdapter);
+
+        reportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
     }
 }
