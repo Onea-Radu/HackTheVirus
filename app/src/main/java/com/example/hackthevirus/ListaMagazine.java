@@ -37,6 +37,7 @@ public class ListaMagazine extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
+
     }
 
     @Override
@@ -91,34 +92,20 @@ public class ListaMagazine extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 try {
-                    /*
+
                     for (DataSnapshot i : dataSnapshot.getChildren()){
+                        try{
                         Magazin mag = new Magazin();
                         mag.numar = i.child("numar").getValue().toString();
                         mag.adresa = i.child("adresa").getValue().toString();
                         mag.nume = i.child("nume").getValue().toString();
                         list.add(mag);
+                    }  catch(Exception e){}
+
                     }
-                     */
 
-                    Magazin mag = new Magazin();
-                    mag.numar = "200";
-                    mag.adresa = "lipscani";
-                    mag.nume = "mega";
 
-                    Magazin mag2 = new Magazin();
-                    mag2.numar = "2000";
-                    mag2.adresa = "pe colt";
-                    mag2.nume = "luca";
 
-                    Magazin mag3 = new Magazin();
-                    mag3.numar = "4000";
-                    mag3.adresa = "pe colt2";
-                    mag3.nume = "luca2";
-
-                    list.add(mag);
-                    list.add(mag2);
-                    list.add(mag3);
 
                    /* final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_list_item_1, android.R.id.text1, list);
